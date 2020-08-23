@@ -1,0 +1,12 @@
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   globs: [],
+0 silly argv   lernaVersion: '3.22.1',
+0 silly argv   '$0': 'lerna',
+0 silly argv   pkg: 'yeoman-generators'
+0 silly argv }
+1 notice cli v3.22.1
+2 verbose rootPath /Users/wukangjun/Desktop/study/generators
+3 info versioning independent
+4 error Error: 404 Not Found - GET http://registry.npmjs.org/yeoman-generators - Not found
+4 error     at /usr/local/lib/node_modules/lerna/node_modules/_@evocateur_npm-registry-fetch@4.0.0@@evocateur/npm-registry-fetch/check-response.js:104:15

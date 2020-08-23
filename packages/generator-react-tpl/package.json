@@ -1,0 +1,25 @@
+{
+  "name": "generator-react-tpl",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "吴康俊 <wukangjun@innotechx.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "generators/app/index.js",
+  "files": [
+    "generators",
+    "__tests__"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "yeoman-generator": "^4.11.0"
+  }
+}
