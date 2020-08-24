@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const rollup = require('rollup')
+const copy = require('rollup-plugin-copy')
 const commonjs = require('@rollup/plugin-commonjs')
 const typescript = require('rollup-plugin-typescript2')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
@@ -61,7 +62,7 @@ function createRollupInputOptions(generatorRoot) {
     ]
   };
 
-  return function(subgenerator) {
+  return function(subgenerator, output) {
     let getInputDir = getBuildingDir(subgenerator)
     inputOptions.input = getInputDir('index.ts');
     inputOptions.plugins.push(typescript({
@@ -73,6 +74,11 @@ function createRollupInputOptions(generatorRoot) {
           declarationDir: path.join(generatorRoot, 'typings')
         },
       },
+    }));
+    inputOptions.plugins.push(copy({
+      targets: [
+        { src: getInputDir('templates'), dest: output }
+      ]
     }))
     return inputOptions;
   }
@@ -98,18 +104,21 @@ function getBuildingDir(base) {
 
 function getBuildingOutput(base) {
   const place = base.replace(/\/(src)\//, '/generators/')
-  return path.join(place, 'index.js')
+  return function(filename = '') {
+    return path.join(place, filename)
+  }
+  
 }
 
 
 async function buildSubGeneratorsFromSubPackage(subgenerator, generatorRoot) {
-  const output = getBuildingOutput(subgenerator)
+  const getOutputFile = getBuildingOutput(subgenerator)
   
   const rollupInputOptions = createRollupInputOptions(generatorRoot)
   const rollupOutputOptions = createRollupOutputOptions()
-  const bundle = await rollup.rollup(rollupInputOptions(subgenerator))
+  const bundle = await rollup.rollup(rollupInputOptions(subgenerator, getOutputFile()))
 
-  bundle.write(rollupOutputOptions(output))
+  bundle.write(rollupOutputOptions(getOutputFile('index.js')))
 }
 
 /**

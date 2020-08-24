@@ -10,16 +10,20 @@
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^5.0.2",
+    "@types/lodash": "^4.14.159",
     "@types/yeoman-generator": "^4.11.2",
     "lerna": "^3.22.1",
     "rollup": "^2.26.5",
+    "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-typescript2": "^0.27.2",
     "typescript": "^4.0.2"
   },
   "dependencies": {
+    "lodash": "^4.17.20",
     "yeoman-generator": "^4.11.0"
   },
   "scripts": {
-    "exec:scope": "lerna exec --scope"
+    "exec:scope": "lerna exec --scope",
+    "build": "node scripts/rollup.config.js"
   }
 }
