@@ -49,7 +49,7 @@ function getBuildingPackages(pname) {
   return subPackagePath ? [subPackagePath] : readdirSync(publishPath)
 }
 
-function createRollupInputOptions() {
+function createRollupInputOptions(generatorRoot) {
   const inputOptions = {
     external: [
       ...Object.keys(packagejson.dependencies),
@@ -66,10 +66,11 @@ function createRollupInputOptions() {
     inputOptions.input = getInputDir('index.ts');
     inputOptions.plugins.push(typescript({
       tsConfig: relativePath('tsconfig.json'),
+      useTsconfigDeclarationDir: true,
       tsconfigDefaults: {
         compilerOptions: {
           declaration: true,
-          declarationDir: getInputDir('typings')
+          declarationDir: path.join(generatorRoot, 'typings')
         },
       },
     }))
@@ -101,11 +102,10 @@ function getBuildingOutput(base) {
 }
 
 
-async function buildSubGeneratorsFromSubPackage(subgenerator) {
+async function buildSubGeneratorsFromSubPackage(subgenerator, generatorRoot) {
   const output = getBuildingOutput(subgenerator)
-
   
-  const rollupInputOptions = createRollupInputOptions()
+  const rollupInputOptions = createRollupInputOptions(generatorRoot)
   const rollupOutputOptions = createRollupOutputOptions()
   const bundle = await rollup.rollup(rollupInputOptions(subgenerator))
 
@@ -120,7 +120,7 @@ async function buildSubGeneratorsFromSubPackage(subgenerator) {
 function subPackageBuild(subpackage) {
   const subGeneratorDis = readdirSync(path.join(subpackage, 'src'));
   if (subGeneratorDis) {
-    subGeneratorDis.forEach(buildSubGeneratorsFromSubPackage)
+    subGeneratorDis.forEach((subgenerator) => buildSubGeneratorsFromSubPackage(subgenerator, subpackage))
   }
 }
 

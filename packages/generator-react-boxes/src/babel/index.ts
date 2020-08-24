@@ -9,7 +9,16 @@ export default class GeneratorReactBoxesApp extends Generator {
     this.log('Generator react boxes!!!')
   }
 
-  async prompting() {
-    await this.prompt([])
+  prompting() {
+    this.prompt([
+      { 
+        type: 'list',
+        name: 'babel',
+        choices: [
+          'babel-01',
+          'babel-02'
+        ]
+      }
+    ])
   }
 }
