@@ -10,7 +10,6 @@
         "forceConsistentCasingInFileNames": true,
         "moduleResolution": "node",
         "declaration": true,
-        "declarationDir": "packages/**/types",
         "lib": [
             "esnext",
             "dom",

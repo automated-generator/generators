@@ -1,0 +1,32 @@
+{
+  "name": "generator-react-boxes",
+  "version": "1.0.0",
+  "description": "generator-react-boxes",
+  "keywords": [
+    "yeoman-generator",
+    "typescript"
+  ],
+  "author": "wukangjun <838927844@qq.com>",
+  "homepage": "https://github.com/automated-generator/generators/tree/master/packages/generator-react-boxes",
+  "license": "ISC",
+  "main": "generators/app/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "generators",
+    "examples"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/automated-generator/generators.git",
+    "directory": "packages/generator-react-boxes"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/automated-generator/generators/issues"
+  }
+}
