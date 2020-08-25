@@ -1,10 +1,8 @@
 import Generator from 'yeoman-generator'
-import { choiceForArchitecture, BoxesPromptOptions } from './shared/prompts';
-import { ARCHITECTURE_NAME } from './shared/constants';
+import { choiceForArchitecture, BoxesPromptDefaultOptions, choiceForBSPlatform, choiceForCSPlatform, choiceForDefaultFramework, logAllSelectedinfo } from './shared/prompts';
 
-export default class GeneratorBoxesApp extends Generator implements BoxesPromptOptions {
-  [ARCHITECTURE_NAME]: string;
-  
+export default class GeneratorBoxesApp extends BoxesPromptDefaultOptions {
+
   constructor(args: string | string[], opts: Generator.CompositionOptions) {
     super(args, opts);
   }
@@ -13,9 +11,16 @@ export default class GeneratorBoxesApp extends Generator implements BoxesPromptO
     this.log('Generator boxes!!!')
   }
 
-  prompting() {
+  get prompting() {
     return {
-      architecturePrompting: choiceForArchitecture(this)
+      architecture: choiceForArchitecture(this),
+      platform_bs: choiceForBSPlatform(this),
+      platform_cs: choiceForCSPlatform(this),
+      framework_client: choiceForDefaultFramework(this)
     }
+  }
+
+  configuration() {
+    logAllSelectedinfo(this)
   }
 }
