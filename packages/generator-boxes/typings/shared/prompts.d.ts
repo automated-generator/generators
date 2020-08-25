@@ -5,6 +5,12 @@ export declare class BoxesPromptDefaultOptions extends Generator {
     [BS_PLATFORM_NAME]: string;
     [CS_PLATFORM_NAME]: string;
     [FRAMEWORK_CLIENT]: string;
+    getPromptOptions(): {
+        architecture: string;
+        bs_platform: string;
+        cs_platform: string;
+        client_framework: string;
+    };
 }
 export declare function choiceForArchitecture(instance: BoxesPromptDefaultOptions): () => Promise<void>;
 export declare function choiceForBSPlatform(instance: BoxesPromptDefaultOptions): () => Promise<void>;

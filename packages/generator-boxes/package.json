@@ -27,5 +27,8 @@
   },
   "bugs": {
     "url": "https://github.com/automated-generator/generators/issues"
+  },
+  "dependencies": {
+    "generator-react-boxes": "^1.0.0"
   }
 }

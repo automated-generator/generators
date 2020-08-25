@@ -1,0 +1,66 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn build --scope generator-boxes
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/wukangjun/Library/Android/sdk/tools:/Users/wukangjun/Library/Android/sdk/platform-tools:/Users/wukangjun/Library/Android/sdk/tools:/Users/wukangjun/Library/Android/sdk/platform-tools
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  12.18.3
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "generators",
+    "private": true,
+    "workspaces": [
+      "packages/*"
+    ],
+    "devDependencies": {
+      "@babel/core": "^7.11.4",
+      "@rollup/plugin-babel": "^5.2.0",
+      "@rollup/plugin-commonjs": "^15.0.0",
+      "@rollup/plugin-node-resolve": "^9.0.0",
+      "@rollup/plugin-typescript": "^5.0.2",
+      "@types/lodash": "^4.14.159",
+      "@types/yeoman-generator": "^4.11.2",
+      "lerna": "^3.22.1",
+      "rollup": "^2.26.5",
+      "rollup-plugin-copy": "^3.3.0",
+      "rollup-plugin-typescript2": "^0.27.2",
+      "typescript": "^4.0.2"
+    },
+    "dependencies": {
+      "lodash": "^4.17.20",
+      "yeoman-generator": "^4.11.0"
+    },
+    "scripts": {
+      "exec:scope": "lerna exec --scope",
+      "build": "node scripts/rollup.config.js"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 1
+  Command: sh
+  Arguments: -c node scripts/rollup.config.js --scope generator-boxes
+  Directory: /Users/wukangjun/Desktop/study/generators
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at ChildProcess.emit (events.js:315:20)
+      at maybeClose (internal/child_process.js:1021:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:286:5)

@@ -10,13 +10,9 @@
   "homepage": "https://github.com/automated-generator/generators/tree/master/packages/generator-react-boxes",
   "license": "ISC",
   "main": "generators/app/index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
   "files": [
     "generators",
-    "examples"
+    "typings"
   ],
   "repository": {
     "type": "git",

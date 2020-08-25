@@ -16,7 +16,7 @@ function last(list) {
 
 function relativePath(pathname) {
   return path.resolve(process.cwd(), pathname);
-} 
+}
 
 const publishPath = relativePath('packages')
 function getPathRelativePublicPath(name) {

@@ -20,6 +20,15 @@ export class BoxesPromptDefaultOptions extends Generator {
   [BS_PLATFORM_NAME]: string;
   [CS_PLATFORM_NAME]: string;
   [FRAMEWORK_CLIENT]: string;
+
+  getPromptOptions() {
+    return {
+      architecture: this[ARCHITECTURE_NAME],
+      bs_platform: this[BS_PLATFORM_NAME],
+      cs_platform: this[CS_PLATFORM_NAME],
+      client_framework: this[FRAMEWORK_CLIENT]
+    }
+  }
 }
 
 export function choiceForArchitecture(instance: BoxesPromptDefaultOptions) {
