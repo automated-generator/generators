@@ -1,0 +1,31 @@
+{
+  "name": "generator-boxes",
+  "version": "1.0.0",
+  "description": "generator-boxes",
+  "keywords": [
+    "yeoman-generator",
+    "typescript"
+  ],
+  "author": "wukangjun <838927844@qq.com>",
+  "homepage": "https://github.com/automated-generator/generators/tree/master/packages/generator-boxes",
+  "license": "ISC",
+  "main": "generators/app/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "generators",
+    "typings"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/automated-generator/generators.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/automated-generator/generators/issues"
+  }
+}

@@ -1,10 +1,8 @@
 import fs from 'fs'
 import path from 'path'
-import Generator from 'yeoman-generator'
 import { flowRight } from 'lodash'
-import { REACT_BASE_DEPENDENCIES } from './constants'
-
-const GENERATOR_APP_NAME = 'react-boxes'
+import Generator from 'yeoman-generator'
+import { REACT_BASE_DEPENDENCIES, GENERATOR_APP_NAME } from './shared/constants'
 
 export default class GeneratorReactBoxesApp extends Generator {
   /**
@@ -22,7 +20,7 @@ export default class GeneratorReactBoxesApp extends Generator {
   }
 
   initializing() {
-    this.log('Generator react boxes!!!')
+    this.log('Generator react boxes!!!');
     this._subGeneratorlist = this._getSubGeneratorlistOutApp();
   }
 
@@ -38,17 +36,12 @@ export default class GeneratorReactBoxesApp extends Generator {
   }
 
   configuring() {
-    this._answers.forEach((answer: string) => {
-      this.composeWith(`${GENERATOR_APP_NAME}:${answer}`);
-    });
+    this._answers.forEach((answer: string) => this.composeWith(`${GENERATOR_APP_NAME}:${answer}`));
   }
 
   install() {
     this.yarnInstall(
-      REACT_BASE_DEPENDENCIES,
-      {
-        cwd: this.destinationRoot()
-      }
+      REACT_BASE_DEPENDENCIES
     );
   }
 
@@ -56,7 +49,7 @@ export default class GeneratorReactBoxesApp extends Generator {
     this.fs.copy(
       this.templatePath('javascript/**/*'),
       this.destinationPath()
-    )
+    );
   }
 
   private _getSubGeneratorlistOutApp(): string[] {

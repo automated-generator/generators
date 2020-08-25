@@ -65,17 +65,19 @@ function createRollupInputOptions(generatorRoot) {
   return function(subgenerator, output) {
     let getInputDir = getBuildingDir(subgenerator)
     inputOptions.input = getInputDir('index.ts');
+    console.log(`${path.join(generatorRoot, 'src')}`)
     inputOptions.plugins.push(typescript({
       tsConfig: relativePath('tsconfig.json'),
       useTsconfigDeclarationDir: true,
       tsconfigDefaults: {
+        include: [`${path.join(generatorRoot, 'src')}/**/*`],
         compilerOptions: {
           declaration: true,
-          declarationDir: path.join(generatorRoot, 'typings')
+          declarationDir: path.join(generatorRoot, 'typings'),
         },
       },
     }));
-    inputOptions.plugins.push(copy({
+    getInputDir('templates') && inputOptions.plugins.push(copy({
       targets: [
         { src: getInputDir('templates'), dest: output }
       ]
@@ -98,7 +100,10 @@ function createRollupOutputOptions() {
 
 function getBuildingDir(base) {
   return function(filename) {
-    return path.join(base, filename)
+    if (fs.existsSync(base, filename)) {
+      return path.join(base, filename)
+    }
+    return null;
   }
 }
 

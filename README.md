@@ -9,6 +9,7 @@
 - [Commands](#Commands)
     - [lerna bootstrap](#commands-bootstrap)
 - [Typescript配置](#typescript)
+- [yeoman项目开发技巧](#yeoman-skills)
 
 
 
@@ -137,3 +138,26 @@ react的typescript配置
 }
 ```
 
+## <a id="yeoman-skills">yeoman项目开发技巧</a>
+
+### <a id="yeoman-git">git仓库初始化</a>
+```
+initGitRepo() {
+  if (!this.options.skipGit) {
+    if (this.gitInstalled || this.isGitInstalled()) {
+        const gitDir = this.gitExec('rev-parse --is-inside-work-tree', { trace: false }).stdout;
+        // gitDir has a line break to remove (at least on windows)
+        if (gitDir && gitDir.trim() === 'true') {
+            this.gitInitialized = true;
+        } else {
+            const shellStr = this.gitExec('init', { trace: false });
+            this.gitInitialized = shellStr.code === 0;
+            if (this.gitInitialized) this.log(chalk.green.bold('Git repository initialized.'));
+            else this.warning(`Failed to initialize Git repository.\n ${shellStr.stderr}`);
+        }
+    } else {
+        this.warning('Git repository could not be initialized, as Git is not installed on your system');
+    }
+  }
+},
+```
