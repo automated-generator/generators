@@ -99,9 +99,11 @@ export function choiceForDefaultFramework(instance: BoxesPromptDefaultOptions) {
 }
 
 export function logAllSelectedinfo(instance: BoxesPromptDefaultOptions) {
-  instance.log(`
-    architecture(体系结构): ${instance[ARCHITECTURE_NAME]};
-    platform(平台): ${instance[BS_PLATFORM_NAME] || instance[CS_PLATFORM_NAME]};
-    framework(框架): ${instance[FRAMEWORK_CLIENT]}
-  `);
+  return () => {
+    instance.log(`
+      architecture(体系结构): ${instance[ARCHITECTURE_NAME]};
+      platform(平台): ${instance[BS_PLATFORM_NAME] || instance[CS_PLATFORM_NAME]};
+      framework(框架): ${instance[FRAMEWORK_CLIENT]}
+    `);
+  }
 }

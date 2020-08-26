@@ -8,9 +8,13 @@ export default class GeneratorReactBoxesApp extends Generator {
      * 所有选项的列表
      */
     private _answers;
-    constructor(args: string | string[], opts: Generator.CompositionOptions);
+    constructor(args: string | string[], opts: Generator.GeneratorOptions);
     initializing(): void;
-    prompting(): Promise<void>;
+    get prompting(): {
+        entryPrompt: () => Promise<void>;
+        choiceLanguage: () => Promise<void>;
+        choiceRouter: () => Promise<void>;
+    };
     configuring(): void;
     install(): void;
     writing(): void;

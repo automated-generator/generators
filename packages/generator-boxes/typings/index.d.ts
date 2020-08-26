@@ -8,6 +8,7 @@ export default class GeneratorBoxesApp extends BoxesPromptDefaultOptions {
         platform_bs: () => Promise<void>;
         platform_cs: () => Promise<void>;
         framework_client: () => Promise<void>;
+        logAllinfo: () => void;
     };
     configuration(): void;
 }

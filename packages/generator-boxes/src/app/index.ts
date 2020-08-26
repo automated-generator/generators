@@ -23,17 +23,16 @@ export default class GeneratorBoxesApp extends BoxesPromptDefaultOptions {
       architecture: choiceForArchitecture(this),
       platform_bs: choiceForBSPlatform(this),
       platform_cs: choiceForCSPlatform(this),
-      framework_client: choiceForDefaultFramework(this)
+      framework_client: choiceForDefaultFramework(this),
+      logAllinfo: logAllSelectedinfo(this)
     }
   }
 
   configuration() {
     const currentFramename = this[FRAMEWORK_CLIENT];
-    logAllSelectedinfo(this);
 
     // 获取当前的框架名称
     if (currentFramename) {
-      console.log(GeneratorCache.of(currentFramename))
       this.composeWith(
         GeneratorCache.of(currentFramename),
         this.getPromptOptions());

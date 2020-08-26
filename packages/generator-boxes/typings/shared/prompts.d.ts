@@ -16,4 +16,4 @@ export declare function choiceForArchitecture(instance: BoxesPromptDefaultOption
 export declare function choiceForBSPlatform(instance: BoxesPromptDefaultOptions): () => Promise<void>;
 export declare function choiceForCSPlatform(instance: BoxesPromptDefaultOptions): () => Promise<void>;
 export declare function choiceForDefaultFramework(instance: BoxesPromptDefaultOptions): () => Promise<void>;
-export declare function logAllSelectedinfo(instance: BoxesPromptDefaultOptions): void;
+export declare function logAllSelectedinfo(instance: BoxesPromptDefaultOptions): () => void;
