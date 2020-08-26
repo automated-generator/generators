@@ -1,6 +1,3 @@
-import fs from 'fs'
-import path from 'path'
-import { flowRight } from 'lodash'
 import Generator from 'yeoman-generator'
 import { REACT_BASE_DEPENDENCIES } from './shared/constants'
 import { choiceForFeatures, choiceForLanguages, choiceForRouter } from './prompts'
@@ -25,7 +22,7 @@ export default class GeneratorReactBoxesApp extends Generator {
 
   get default() {
     return {
-      dynamicComposeWithBySlected: dynamicComposeWithBySlected(this)
+      dynamicComposeWith: dynamicComposeWithBySlected(this)
     }
   }
 
