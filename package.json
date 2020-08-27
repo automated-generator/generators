@@ -12,6 +12,7 @@
     "@rollup/plugin-typescript": "^5.0.2",
     "@types/lodash": "^4.14.159",
     "@types/yeoman-generator": "^4.11.2",
+    "jest": "^26.4.2",
     "lerna": "^3.22.1",
     "rollup": "^2.26.5",
     "rollup-plugin-copy": "^3.3.0",
@@ -24,6 +25,7 @@
   },
   "scripts": {
     "exec:scope": "lerna exec --scope",
-    "build": "node scripts/rollup.config.js"
+    "build": "node scripts/rollup.config.js",
+    "test": "jest"
   }
 }
