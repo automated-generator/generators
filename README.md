@@ -10,6 +10,7 @@
     - [lerna bootstrap](#commands-bootstrap)
 - [Typescript配置](#typescript)
 - [yeoman项目开发技巧](#yeoman-skills)
+- [yeoman测试](#yeoman-test)
 
 
 
@@ -160,4 +161,53 @@ initGitRepo() {
     }
   }
 },
+```
+
+### <a id="yeoman-test">yeoman测试</a>
+```
+var helpers = require('yeoman-test')
+```
+对生成器进行单元测试时，最有用的方法是helper.run()。该方法将返回一个[RunContext](https://github.com/yeoman/yeoman-test/blob/master/lib/run-context.js)实例，您可以在该实例上调用method来设置目录、模拟提示符、模拟参数等等。
+
+有时，您可能希望为生成器构造一个测试场景，以便使用目标目录中的现有内容运行。在这种情况下，您可以使用回调函数调用`inTmpDir()`，如下所示:
+```
+var path = require('path');
+var fs = require('fs-extra');
+
+helpers.run(path.join(__dirname, '../app'))
+  .inTmpDir(function (dir) {
+    // `dir` is the path to the new temporary directory
+    fs.copySync(path.join(__dirname, '../templates/common'), dir)
+  })
+  .withPrompts({ coffee: false })
+  .then(function () {
+    assert.file('common/file.txt');
+  });
+```
+
+如果生成器调用composeWith()，则可能需要模拟那些依赖的生成器。使用# withgenerator()，传递使用#createDummyGenerator()作为第一项的数组，并将模拟生成器的名称空间作为第二项的数组:
+```
+var deps = [
+  [helpers.createDummyGenerator(), 'karma:app']
+];
+return helpers.run(path.join(__dirname, '../app')).withGenerators(deps);
+```
+
+您还可以运行生成器将其作为模块导入。这是有用的，如果源代码的生成器是颠倒。
+
+您将需要提供以下设置运行:
+解析:生成器的路径，例如../src/app/index.js
+名称空间:生成器的名称空间，例如mygenerator:app
+```
+var MyGenerator = require('../src/app');
+
+helpers.run(MyGenerator, { 
+  resolved: require.resolve(__dirname, '../src/app/index.js'),
+  namespace: 'mygenerator:app'
+});
+```
+
+Yeoman使用生成器相关的断言助手扩展了本机断言模块。您可以在`yeoman-assert`存储库中看到断言助手的完整列表。
+```
+var assert = require('yeoman-assert');
 ```

@@ -1,27 +1,44 @@
 import Generator from 'yeoman-generator'
-import { REACT_ROUTER_DEPENDENCIES } from './constants';
+import { REACT_ROUTER_DEPENDENCIES, THEME_ROUTER_NAME } from './constants';
 
 export default class GeneratorReactBoxesRouter extends Generator {
-  private _answer!: string;
+  private themeRouter!: string;
 
   constructor(args: string | string[], opts: Generator.GeneratorOptions) {
     super(args, opts);
+
+    this.option('typescript', {
+      type: Boolean,
+      alias: '-t',
+      description: 'use typescript language'
+    });
+
+    this.option('name', {
+      type: String,
+      alias: '-n',
+      description: 'slected has existed themes'
+    });
   }
 
   initializing() {
     this.log('react-boxes:router')
+
   }
 
   async prompting() {
+    if (this.options.name) {
+      this.themeRouter = this.options.name;
+      return;
+    }
+
     const answer = await this.prompt({
       type: 'list',
-      name: 'themeRouter',
+      name: THEME_ROUTER_NAME,
       choices: [
-        { name: 'react-dom-router', value: 'default' },
-        { name: 'react-theme-1', value: 'theme1' }
+        { name: 'react-dom-router', value: 'default' }
       ]
     });
-    this._answer = answer.themeRouter;
+    this.themeRouter = answer[THEME_ROUTER_NAME];
   }
 
   install() {
@@ -36,6 +53,10 @@ export default class GeneratorReactBoxesRouter extends Generator {
    * - 返回覆盖当前的App.js文件
    */
   writing() {
-    
+
+  }
+
+  end() {
+    this.config.set(THEME_ROUTER_NAME, this.themeRouter)
   }
 }
