@@ -1,5 +1,6 @@
 import Generator from 'yeoman-generator'
 import { REACT_ROUTER_DEPENDENCIES, THEME_ROUTER_NAME } from './constants';
+import { NAME_OPTION, useOptions } from './useOptions';
 
 export default class GeneratorReactBoxesRouter extends Generator {
   private themeRouter!: string;
@@ -7,17 +8,7 @@ export default class GeneratorReactBoxesRouter extends Generator {
   constructor(args: string | string[], opts: Generator.GeneratorOptions) {
     super(args, opts);
 
-    this.option('typescript', {
-      type: Boolean,
-      alias: '-t',
-      description: 'use typescript language'
-    });
-
-    this.option('name', {
-      type: String,
-      alias: '-n',
-      description: 'slected has existed themes'
-    });
+    useOptions(this);
   }
 
   initializing() {
@@ -27,7 +18,7 @@ export default class GeneratorReactBoxesRouter extends Generator {
 
   async prompting() {
     if (this.options.name) {
-      this.themeRouter = this.options.name;
+      this.themeRouter = this.options[NAME_OPTION];
       return;
     }
 

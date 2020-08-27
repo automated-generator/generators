@@ -1,6 +1,7 @@
 import helpers from 'yeoman-test'
 import assets from 'yeoman-assert'
 import GeneratorReactBoxesRouter from '../src/router'
+import { THEME_ROUTER_NAME } from '../src/router/constants'
 
 /**
  * yo react-boxes:router
@@ -35,7 +36,7 @@ describe('react-boxes:router', () => {
      */
     it('选项写入到.yo-rc.json文件', () => {
       runResult.assertFileContent([
-        ['.yo-rc.json', /"name": "default"/]
+        ['.yo-rc.json', /"themeRouterName": "default"/]
       ]);
       runResult.assertFile('.yo-rc.json');
     });
