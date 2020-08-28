@@ -1,3 +1,8 @@
+/*
+ * @Author: wukangjun
+ * @Date: 2020-08-28 18:00:17
+ * @Description: write something
+ */
 import Generator from 'yeoman-generator'
 import { REACT_BASE_DEPENDENCIES } from './shared/constants'
 import { choiceForFeatures, choiceForLanguages, choiceForRouter } from './prompts'
@@ -33,8 +38,8 @@ export default class GeneratorReactBoxesApp extends Generator {
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath('javascript/**/*'),
+    this.fs.copyTpl(
+      this.templatePath('javascript'),
       this.destinationPath()
     );
   }

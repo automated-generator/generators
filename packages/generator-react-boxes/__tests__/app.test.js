@@ -3,8 +3,11 @@
  * @Date: 2020-08-27 21:52:28
  * @Description: write something
  */ 
+
+import path from 'path'
 import helpers from 'yeoman-test'
 import assert from 'yeoman-assert'
+import extendsFS from 'fs-extra'
 import GeneratorReactBoxesApp from '../src/app'
 
 describe('generator-react-boxes:app', () => {
@@ -22,9 +25,12 @@ describe('generator-react-boxes:app', () => {
         let runResult = null;
         beforeAll(() => {
             return helpers.create(GeneratorReactBoxesApp)
+                .inTmpDir(dir => {
+                    extendsFS.copySync(path.join(__dirname, '../src/app/templates'), dir)
+                })
                 .run()
                 .then(result => {
-                    runResult = result
+                    runResult = result;
                 })
         })
 
