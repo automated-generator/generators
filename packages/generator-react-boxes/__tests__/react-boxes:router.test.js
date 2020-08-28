@@ -1,7 +1,11 @@
+/*
+ * @Author: wukangjun
+ * @Date: 2020-08-27 21:52:28
+ * @Description: write something
+ */
 import helpers from 'yeoman-test'
 import assets from 'yeoman-assert'
 import GeneratorReactBoxesRouter from '../src/router'
-import { THEME_ROUTER_NAME } from '../src/router/constants'
 
 /**
  * yo react-boxes:router
