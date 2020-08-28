@@ -1,11 +1,7 @@
-/*
- * @Author: wukangjun
- * @Date: 2020-08-27 21:52:28
- * @Description: write something
- */
 import helpers from 'yeoman-test'
 import assets from 'yeoman-assert'
 import GeneratorReactBoxesRouter from '../src/router'
+import { THEME_ROUTER_NAME } from '../src/router/constants'
 
 /**
  * yo react-boxes:router
@@ -44,19 +40,6 @@ describe('react-boxes:router', () => {
       ]);
       runResult.assertFile('.yo-rc.json');
     });
-
-    /**
-     * 默认配置-测试用例2
-     *  默认react-dom-router模版是否写入项目
-     */
-    it('react-dom-router模版', () => {
-      runResult.assertFileContent([
-        ['package.json', /"react-dom-router"/]
-      ]);
-      runResult.assertFileContent([
-        ['src/App.jsx', /"react-dom-router"/]
-      ])
-    })
 
   })
 })

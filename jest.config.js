@@ -3,6 +3,10 @@ module.exports = {
   testMatch: [
     "<rootDir>/packages/**/?(*.)+(spec|test).[jt]s?(x)"
   ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    'templates'
+  ],
   transform: {
     "^.+\\.jsx?$": require.resolve('babel-jest'),
     "^.+\\.tsx?$": require.resolve('ts-jest')

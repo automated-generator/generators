@@ -10,12 +10,12 @@ const categoryDefaultChoices = [
  * subGenerator
  */
 export const categoryChoices = [
-  { name: 'Babel', value: ReactGeneratorFeatures.Babel, independent: true },
+  // { name: 'Babel', value: ReactGeneratorFeatures.Babel, independent: true },
   { name: 'Language', value: ReactGeneratorFeatures.Language, independent: true },
   { name: 'Router', value: ReactGeneratorFeatures.Router },
   { name: 'State', value: ReactGeneratorFeatures.State },
   { name: 'Linter/Formatter', value: ReactGeneratorFeatures.LinterWithFormatter },
-  { name: 'Unit Testing', value: ReactGeneratorFeatures.UnitTesting }
+  // { name: 'Unit Testing', value: ReactGeneratorFeatures.UnitTesting }
 ];
 
 export function choiceForFeatures(context: Generator) {

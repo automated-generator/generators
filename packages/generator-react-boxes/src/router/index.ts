@@ -33,7 +33,7 @@ export default class GeneratorReactBoxesRouter extends Generator {
   }
 
   install() {
-    //this.yarnInstall(REACT_ROUTER_DEPENDENCIES)
+    this.yarnInstall(REACT_ROUTER_DEPENDENCIES)
   }
 
   /**

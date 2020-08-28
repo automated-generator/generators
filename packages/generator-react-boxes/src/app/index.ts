@@ -22,7 +22,7 @@ export default class GeneratorReactBoxesApp extends Generator {
 
   get default() {
     return {
-      dynamicComposeWith: dynamicComposeWithBySlected(this)
+      //dynamicComposeWith: dynamicComposeWithBySlected(this)
     }
   }
 
