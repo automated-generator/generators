@@ -33,5 +33,6 @@
     "exec:scope": "lerna exec --scope",
     "build": "node scripts/rollup.config.js",
     "test": "jest"
-  }
+  },
+  "keywords": ["lerna", "yeoman"] 
 }
